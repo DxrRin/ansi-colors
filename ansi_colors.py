@@ -2,20 +2,11 @@
 """
 ANSI Colors Helper
 ------------------
-A small module for colored console output using ANSI escape codes.
-Works on most modern terminals (Windows, Linux, macOS, VS Code, etc.)
-Includes auto-reset with colorama for Windows compatibility.
-
-Usage Example:
-    from ansi_colors import GREEN, RED, color_text
-
-    print(GREEN + "This is green text")
-    print(color_text("This is red", RED))
+Lightweight Python module for colorful console output using ANSI escape codes.
+Works on Windows, macOS, and Linux terminals.
 """
 
 import colorama
-
-# Initialize colorama for Windows support
 colorama.init(autoreset=True)
 
 # Text styles
@@ -44,21 +35,15 @@ BG_WHITE = "\033[47m"
 def color_text(text: str, color: str) -> str:
     """
     Wrap text with a color and reset automatically.
-    
-    Args:
-        text (str): The string to color.
-        color (str): ANSI color code (e.g., RED, GREEN).
-
-    Returns:
-        str: Colored string ready for printing.
 
     Example:
-        print(color_text("Hello, world!", GREEN))
+        print(color_text("Loaded successfully", GREEN))
     """
     return f"{color}{text}{RESET}"
 
 
 # Optional: quick test if run directly
+# You can remove or comment out this block if you just want to use the module in your projects
 if __name__ == "__main__":
     print(color_text("This is red", RED))
     print(color_text("This is green", GREEN))
